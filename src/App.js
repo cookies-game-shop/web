@@ -6,7 +6,10 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./components/Login";
-import Signup from "./Signup";
+import Signup from "./components/Signup";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+
 
 function App() {
     return (
@@ -18,6 +21,8 @@ function App() {
                 <Route path="/products/:id" element={<ProductDetail/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
+                <Route path="/cart" element={<Cart/>}/>
+                <Route path="/checkout" element={<Checkout/>}/>
                 <Route
                     path="/"
                     element={<Navigate to="/" replace />}
