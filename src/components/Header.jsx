@@ -1,11 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import BtnCart from "./buttons/BtnCart";
+import AuthService from "../service/authService";
+import userService from "../service/userService";
+import {useNavigate} from "react-router";
+import axios from "axios";
 
+export default function Header(props) {
+    const [isAdmin, setIsAdmin] = useState(false);
 
-
-const Header =() =>{
-    return(
+    useEffect(()=>{
+        axios.get('http://localhost:8080/user/get-admin-creds',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(response => {
+            setIsAdmin(response.data);
+        }).catch(e => {
+            console.log(e);
+        })
+    },[])
+    return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
                 <div className="container">
@@ -33,15 +50,21 @@ const Header =() =>{
                                 <i className="fa fa-user-plus me-1"></i>
                                 Register
                             </NavLink>
+                            {isAdmin ?
+                                <NavLink to="/add-game" className="btn btn-outline-dark">
+                                    <i className="fa fa-sign-in me-1"></i>
+                                    Add Game
+                                </NavLink> : null}
 
-                            <BtnCart/>
+                            {/*<BtnCart/>*/}
                         </div>
 
                     </div>
                 </div>
             </nav>
         </div>
-    )
+    );
+
+
 }
 
-export default Header
