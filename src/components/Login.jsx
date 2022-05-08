@@ -1,21 +1,21 @@
-import React, {Component, useEffect} from "react";
+import React, {Component, useContext, useEffect} from "react";
 import axios from "axios";
 import {useState} from "react";
 import AuthService from "../service/authService";
 import {useNavigate} from "react-router";
+import {UserContext, useUserContext} from "../context/UserContext";
 
 const url = "http://localhost:8080";
 
 export default function Login() {
-
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const {setToken} = useUserContext();
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault()
-        AuthService.login(username, password);
+        AuthService.login(username, password,setToken);
         navigate("/");
     }
     return (

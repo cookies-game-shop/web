@@ -7,35 +7,38 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
-import AuthService from "./service/authService";
 import AddGame from "./components/AddGame";
+import {UserContext, useUserContext} from "./context/UserContext";
+import {useState} from "react";
 
-/*const isAdmin = AuthService.isAdmin();
-const isAdminContext = createContext(isAdmin);
-console.log(isAdmin)*/
-
-function App(){
-
+function App() {
+    const [token, setToken] = useState(false);
 
     return (
         <>
-            {/*<isAdminContext.Provider value={isAdmin}>*/}
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/products/:id" element={<ProductDetail/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/add-game" element={<AddGame/>}/>
-                <Route path="/signup" element={<Signup/>}/>
-                <Route path="/cart" element={<Cart/>}/>
-                <Route path="/checkout" element={<Checkout/>}/>
-                <Route
-                    path="/"
-                    element={<Navigate to="/" replace />}
-                />
-            </Routes>
-            {/*</isAdminContext.Provider>*/}
+            <UserContext.Provider value={{token, setToken}}>
+                <Header/>
+                <Routes>
+
+                    <Route path="/signup" element={<Signup/>}/>
+                    <Route path="/login" element={<Login/>}/>
+
+
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/about" element={<About/>}/>
+                    <Route path="/products/:id" element={<ProductDetail/>}/>
+
+                    <Route path="/add-game" element={<AddGame/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/checkout" element={<Checkout/>}/>
+                    <Route
+                        path="/"
+                        element={<Navigate to="/" replace/>}
+                    />
+
+
+                </Routes>
+            </UserContext.Provider>
         </>
     );
 }

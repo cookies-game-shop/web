@@ -1,11 +1,8 @@
 import axios from "axios";
 import QueryString from 'query-string'
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router";
-
 
 class AuthService {
-    async login(username, password) {
+    async login(username, password,setToken) {
        await axios.post('http://localhost:8080/login',
             QueryString.stringify({
                 username: username,
@@ -15,20 +12,21 @@ class AuthService {
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
             }).then(function (res) {
+                setToken(true);
             localStorage.setItem('token', res.data.access_token)
             localStorage.setItem('refresh_token', res.data.refresh_token)
         });
-        await axios.get('http://localhost:8080/user/get-admin-creds',
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => {
-            localStorage.setItem('isAdmin', response.data)
-        }).catch(e => {
-            console.log(e);
-        })
+        // await axios.get('http://localhost:8080/user/get-admin-creds',
+        //     {
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Authorization': `Bearer ${localStorage.getItem('token')}`
+        //         }
+        //     }).then(response => {
+        //     console.log(response.data);
+        // }).catch(e => {
+        //     console.log(e);
+        // })
     }
 
     refresh_token() {
@@ -45,26 +43,6 @@ class AuthService {
         });
         return false;
     }
-
-    logout() {
-        localStorage.removeItem("user");
-    }
-
-    isAdmin() {
-        axios.get('http://localhost:8080/user/get-admin-creds',
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => {
-           return response.data;
-        }).catch(e => {
-            console.log(e);
-            return false;
-        })
-    }
-
 }
 
 export default new AuthService();

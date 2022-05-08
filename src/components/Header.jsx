@@ -1,27 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import BtnCart from "./buttons/BtnCart";
-import AuthService from "../service/authService";
-import userService from "../service/userService";
-import {useNavigate} from "react-router";
-import axios from "axios";
 
 export default function Header(props) {
     const [isAdmin, setIsAdmin] = useState(false);
+    const tkn = localStorage.getItem("token");
+    console.log(tkn === null);
 
-    useEffect(()=>{
-        axios.get('http://localhost:8080/user/get-admin-creds',
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => {
-            setIsAdmin(response.data);
-        }).catch(e => {
-            console.log(e);
-        })
-    },[])
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
@@ -42,14 +26,20 @@ export default function Header(props) {
                             </li>
                         </ul>
                         <div className="buttons">
-                            <NavLink to="/login" className="btn btn-outline-dark">
-                                <i className="fa fa-sign-in me-1"></i>
-                                Login
-                            </NavLink>
-                            <NavLink to="/signup" className="btn btn-outline-dark ms-2">
-                                <i className="fa fa-user-plus me-1"></i>
-                                Register
-                            </NavLink>
+                            {
+                                tkn === null ?
+                                    <>
+                                        <NavLink to="/login" className="btn btn-outline-dark">
+                                            <i className="fa fa-sign-in me-1"></i>
+                                            Login
+                                        </NavLink>
+                                    </> :
+                                    <button className="btn btn-outline-dark"
+                                             onClick={() => localStorage.clear()}>
+                                        <i className="fa fa-sign-in me-1"></i>
+                                        Sign Out
+                                    </button>
+                            }
                             {isAdmin ?
                                 <NavLink to="/add-game" className="btn btn-outline-dark">
                                     <i className="fa fa-sign-in me-1"></i>
