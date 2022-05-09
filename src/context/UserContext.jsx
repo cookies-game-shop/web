@@ -1,9 +1,9 @@
-import {createContext, useContext} from "react";
+import { createContext, useContext } from "react";
 
 export const UserContext = createContext({
-    token: false,
-    setToken: () => {
-    },
-})
+  token: false,
+  setToken: () => {},
+  isAdmin: false,
+  setIsAdmin: () => {},
+});
 export const useUserContext = () => useContext(UserContext);
-

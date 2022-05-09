@@ -7,8 +7,9 @@ export default function AddGame() {
     const [desc, setDesc] = useState("");
     const [price, setPrice] = useState();
     const [image, setImage] = useState();
-    const handleSubmit = async () => {
-        await GameService.addGame(name, desc, price, image).then(r => console.log(r));
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await GameService.addGame(name, desc, price, image);
     }
     return (
         <>
