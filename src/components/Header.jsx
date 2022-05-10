@@ -53,19 +53,23 @@ export default function Header() {
             <div className="buttons">
               {token === false ? (
                 <>
-                  <NavLink to="/login" className="btn btn-outline-dark">
+                  <NavLink to="/login" className="btn btn-outline-dark ms-2">
                     <i className="fa fa-sign-in me-1"></i>
                     Login
                   </NavLink>
+                  <NavLink to="/signup" className="btn btn-outline-dark ms-2">
+                    <i className="fa fa-sign-in me-1"></i>
+                    Register
+                  </NavLink>
                 </>
               ) : (
-                <button className="btn btn-outline-dark" onClick={logout}>
+                <button className="btn btn-outline-dark ms-2" onClick={logout}>
                   <i className="fa fa-sign-in me-1"></i>
                   Sign Out
                 </button>
               )}
               {isAdmin ? (
-                <NavLink to="/add-game" className="btn btn-outline-dark">
+                <NavLink to="/add-game" className="btn btn-outline-dark ms-2">
                   <i className="fa fa-sign-in me-1"></i>
                   Add Game
                 </NavLink>

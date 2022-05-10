@@ -1,5 +1,5 @@
 import GameService from "../service/gameService";
-import {useState} from "react";
+import React, {useState} from "react";
 
 export default function AddGame() {
 
@@ -13,6 +13,7 @@ export default function AddGame() {
     }
     return (
         <>
+            <div className="container my-5">
             <form encType="multipart/form-data" >
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
@@ -40,9 +41,9 @@ export default function AddGame() {
                 <input type={"file"} onChange={e => {
                     setImage(e.target.value)
                 }}/>
-
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+                <button className="btn btn-outline-dark mx-auto" type="submit" onClick={handleSubmit}>Add Game</button>
             </form>
+            </div>
         </>
     )
 }
