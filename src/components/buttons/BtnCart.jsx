@@ -1,4 +1,5 @@
-/*import React from "react";
+/*
+import React from "react";
 import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 
@@ -11,4 +12,5 @@ const BtnCart=()=>{
         </NavLink>
     )
 }
-export default BtnCart*/
+export default BtnCart
+*/

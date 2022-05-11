@@ -8,7 +8,7 @@ import cartService from "../service/cartService";
 
 const Cart=()=> {
     const [products, setProducts] = useState([]);
-    const {id} = useParams();
+    const {game_id} = useParams();
     const {username}=useParams();
 
     function fetchCart() {
@@ -28,7 +28,7 @@ const Cart=()=> {
     }
     const handleClose = async (e) => {
         e.preventDefault();
-        cartService.deleteFromCart(username, id)
+        cartService.deleteFromCart(username, game_id)
     }
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const Cart=()=> {
             {products.map((item, i) =>
                 <div className="px-4 my-5 bg-light rounded-3" key={item.id}>
                     <div className="container py-4">
-                        <button onClick={handleClose} className="btn-close float-end" aria-label="Close"></button>
+                        <button onClick={handleClose} className="btn-close float-end" aria-label="Close"/>
                         <div className="row justify-content-center">
                             <div className="col-md-4">
                                 <img src={item.image} alt={item.name} height="200px"
@@ -59,7 +59,7 @@ const Cart=()=> {
     )
 
 
-    /* const emptyCart=()=>{
+   /* const emptyCart=()=>{
          return(
          <div className="px-4 my-5 bg-light rounded-3 py-5">
              <div className="container py-4">
@@ -69,7 +69,7 @@ const Cart=()=> {
              </div>
          </div>
          )
-     }
+     }*/
 
      const button = () => {
          return(
@@ -79,7 +79,7 @@ const Cart=()=> {
                  </div>
              </div>
          );
-     }*/
+     }
 
     /*  return(
           <>

@@ -25,13 +25,10 @@ class cartService{
     }
 
     deleteFromCart(username, game_id) {
+
         axios
             .delete(
-                "http://localhost:8080/user/delete-card",
-                /*QueryString.stringify({
-                    username: username,
-                    game_id: game_id,
-                }),*/
+                `http://localhost:8080/user/delete-card?username=${username}&game_id=${game_id}`,
                 {
                     headers: {
 
@@ -39,6 +36,13 @@ class cartService{
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
 
                     },
+
+                    data: JSON.stringify({
+                        username: username,
+                        game_id: game_id,
+                    }),
+
+
                 }
             )
             .then(function (res) {

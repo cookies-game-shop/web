@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
+import BtnCart from "./buttons/BtnCart";
 
 export default function Header() {
   const { token, setToken, isAdmin, setIsAdmin } = useUserContext();
@@ -63,10 +64,17 @@ export default function Header() {
                   </NavLink>
                 </>
               ) : (
+                  <>
+                  <NavLink to="/cart" className="btn btn-outline-dark ms-2">
+                    <i className="fa fa-shopping-cart me-1"></i>
+                    Cart
+                  </NavLink>
                 <button className="btn btn-outline-dark ms-2" onClick={logout}>
                   <i className="fa fa-sign-in me-1"></i>
                   Sign Out
                 </button>
+                  </>
+
               )}
               {isAdmin ? (
                 <NavLink to="/add-game" className="btn btn-outline-dark ms-2">
