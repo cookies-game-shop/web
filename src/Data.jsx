@@ -1,3 +1,4 @@
+/*
 let Image = require("../src/assets/cookie.png")
 const DATA=[
     {
@@ -43,4 +44,4 @@ const DATA=[
         img: Image
     }
 ]
-export default DATA
+export default DATA*/

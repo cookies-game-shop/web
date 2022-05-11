@@ -3,7 +3,7 @@ import AuthService from "../service/authService";
 import { useNavigate } from "react-router";
 import { useUserContext } from "../context/UserContext";
 
-const url = "http://localhost:8080";
+
 
 export default function Login() {
   const [username, setUsername] = useState("");

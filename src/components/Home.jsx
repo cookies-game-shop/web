@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DATA from "../Data";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
