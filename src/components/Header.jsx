@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import BtnCart from "./buttons/BtnCart";
 
 export default function Header() {
   const { token, setToken, isAdmin, setIsAdmin } = useUserContext();
+  const navigate=useNavigate();
 
   function logout() {
     localStorage.clear();
     setToken(false);
     setIsAdmin(false);
+    navigate("/")
+
   }
   useEffect(() => {
     if (localStorage.getItem("token") !== null) {
@@ -83,7 +86,6 @@ export default function Header() {
                 </NavLink>
               ) : null}
 
-              {/*<BtnCart/>*/}
             </div>
           </div>
         </div>

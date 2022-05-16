@@ -1,15 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from "react-redux";
-import {delItem} from "../actions";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 import {useParams} from "react-router";
 import cartService from "../service/cartService";
+import {setImages} from "../service/utils";
 
 const Cart=()=> {
     const [products, setProducts] = useState([]);
-    const {game_id} = useParams();
-    const {username}=useParams();
 
     function fetchCart() {
         axios.get("http://localhost:8080/user/get-cart", {
@@ -19,21 +16,21 @@ const Cart=()=> {
             }
         })
             .then((res) => {
-                console.log(res)
-                setProducts(res.data)
+               const arr = res.data;
+                const cop = setImages(arr);
+                setProducts(cop);
             })
             .catch((err) => {
                 console.log(err);
             })
     }
-    const handleClose = async (e) => {
-        e.preventDefault();
-        cartService.deleteFromCart(username, game_id)
+    const handleClose =  (id) => {
+        cartService.deleteFromCart(id).then(()=>  console.log("DELETED")).catch(e=>{console.log(e)});
     }
 
     useEffect(() => {
         fetchCart();
-    }, [])
+    }, [products])
 
 
     return (
@@ -41,10 +38,10 @@ const Cart=()=> {
             {products.map((item, i) =>
                 <div className="px-4 my-5 bg-light rounded-3" key={item.id}>
                     <div className="container py-4">
-                        <button onClick={handleClose} className="btn-close float-end" aria-label="Close"/>
+                        <button onClick={() =>handleClose(item.id)} className="btn-close float-end" aria-label="Close"/>
                         <div className="row justify-content-center">
                             <div className="col-md-4">
-                                <img src={item.image} alt={item.name} height="200px"
+                                <img src={item.previewImage} alt={item.name} height="200px"
                                      width="200px"/>
                             </div>
                             <div className="col-md-4">
@@ -53,13 +50,21 @@ const Cart=()=> {
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+
+
         </div>
-    )
+            )}
+            <div className="container">
+                <div className="row">
+                    <NavLink to="/checkout" className="btn-lg btn btn-outline-dark mb-5 w-25 mx-auto">Checkout</NavLink>
+                </div>
+            </div>
+        </div>)
+}
 
 
-   /* const emptyCart=()=>{
+
+  /* /* const emptyCart=()=>{
          return(
          <div className="px-4 my-5 bg-light rounded-3 py-5">
              <div className="container py-4">
@@ -71,7 +76,7 @@ const Cart=()=> {
          )
      }*/
 
-     const button = () => {
+     /*const button = () => {
          return(
              <div className="container">
                  <div className="row">
@@ -81,13 +86,12 @@ const Cart=()=> {
          );
      }
 
-    /*  return(
+     return(
           <>
-              {state.length===0 && emptyCart()}
-              {state.length!==0 && state.map(cartItems)}
-              {state.length !== 0 && button()}
+
+              { button()}
           </>
       )*/
-}
+
 
 export default Cart

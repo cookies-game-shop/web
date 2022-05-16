@@ -2,12 +2,11 @@ import axios from "axios";
 import QueryString from "query-string";
 
 class cartService{
-    addToCart(username, game_id) {
+    addToCart( game_id) {
     axios
             .post(
-                `http://localhost:8080/user/add-to-card?username=${username}&game_id=${game_id}`,
+                `http://localhost:8080/user/add-to-card?game_id=${game_id}`,
                 QueryString.stringify({
-                    username: username,
                     game_id: game_id,
                 }),
                 {
@@ -24,26 +23,29 @@ class cartService{
             });
     }
 
-    deleteFromCart(username, game_id) {
+    async deleteFromCart(game_id) {
 
         axios
             .delete(
-                `http://localhost:8080/user/delete-card?username=${username}&game_id=${game_id}`,
+                `http://localhost:8080/user/delete-card?game_id=${game_id}`,
                 {
                     headers: {
 
-                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Content-Type": "application/json",
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
 
                     },
 
+
                     data: JSON.stringify({
-                        username: username,
                         game_id: game_id,
-                    }),
-
-
+                    })
                 }
+
+
+
+
+
             )
             .then(function (res) {
                 console.log(res.data);

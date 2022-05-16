@@ -54,6 +54,18 @@ class AuthService {
       });
     return false;
   }
+
+  register(username, password) {
+    axios.post('http://localhost:8080/user/register', {
+      username: username,
+      password: password
+    })
+        .then((response) => {
+          const user = response.data;
+          console.log(user);
+
+        });
+  }
 }
 
 export default new AuthService();
