@@ -33,8 +33,43 @@ const Cart=()=> {
     }, [products])
 
 
+    var total = 0;
+    const itemList = (item) => {
+        total = total + item.price;
+        return (
+            <li className="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 className="my-0">{item.name}</h6>
+                </div>
+                <span className="text-muted">${item.price}</span>
+            </li>
+        );
+    }
+
+
     return (
         <div>
+            <div className="container my-5">
+                <div className="row g-5">
+                    <div className="col-md-5 col-lg-4 order-md-last">
+                        <h4 className="d-flex justify-content-between align-items-center mb-3">
+                            <span className="text-black">Your cart</span>
+                            <span className="badge bg-black rounded-pill">{products.length}</span>
+                        </h4>
+                        <ul className="list-group mb-3">
+                            {products.map(itemList)}
+
+                            <li className="list-group-item d-flex justify-content-between">
+                                <span>Total (USD)</span>
+                                <strong>${total}</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+            <div className="col-md-7 col-lg-8">
+            <div className="row g-3">
             {products.map((item, i) =>
                 <div className="px-4 my-5 bg-light rounded-3" key={item.id}>
                     <div className="container py-4">
@@ -56,42 +91,19 @@ const Cart=()=> {
             )}
             <div className="container">
                 <div className="row">
-                    <NavLink to="/checkout" className="btn-lg btn btn-outline-dark mb-5 w-25 mx-auto">Checkout</NavLink>
+                    <NavLink to="/pay" className="w-100 btn-lg btn btn-outline-dark mb-5 w-25 mx-auto">Pay</NavLink>
                 </div>
             </div>
-        </div>)
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    )
 }
 
 
 
-  /* /* const emptyCart=()=>{
-         return(
-         <div className="px-4 my-5 bg-light rounded-3 py-5">
-             <div className="container py-4">
-                 <div className="row">
-                     <h3>Your Cart is Empty</h3>
-                 </div>
-             </div>
-         </div>
-         )
-     }*/
-
-     /*const button = () => {
-         return(
-             <div className="container">
-                 <div className="row">
-                     <NavLink to="/checkout" className="btn btn-outline-dark mb-5 w-25 mx-auto">Checkout</NavLink>
-                 </div>
-             </div>
-         );
-     }
-
-     return(
-          <>
-
-              { button()}
-          </>
-      )*/
 
 
 export default Cart
