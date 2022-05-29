@@ -12,6 +12,8 @@ import { UserContext } from "./context/UserContext";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Pay from "./components/Pay";
+import {ToastContainer} from "react-toastify";
+
 function App() {
   const [token, setToken] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -38,6 +40,7 @@ function App() {
           <Route path="/" element={<Navigate to="/" replace />} />
         </Routes>
       </UserContext.Provider>
+      <ToastContainer/>
     </>
   );
 }

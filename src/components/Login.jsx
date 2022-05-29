@@ -2,7 +2,6 @@ import { useState } from "react";
 import AuthService from "../service/authService";
 import { useNavigate } from "react-router";
 import { useUserContext } from "../context/UserContext";
-import {Alert, Snackbar} from "@mui/material";
 
 
 
@@ -16,6 +15,7 @@ export default function Login() {
     e.preventDefault();
     AuthService.login(username, password, setToken, setIsAdmin);
     navigate("/");
+
   };
   return (
     <>

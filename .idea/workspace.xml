@@ -6,8 +6,15 @@
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/authService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/cartService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/cartService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +54,11 @@
       <workItem from="1652374261711" duration="3787000" />
       <workItem from="1652424860759" duration="8768000" />
       <workItem from="1652705542599" duration="773000" />
-      <workItem from="1653378490513" duration="3687000" />
+      <workItem from="1653378490513" duration="4620000" />
+      <workItem from="1653718598826" duration="10397000" />
+      <workItem from="1653811335106" duration="1083000" />
+      <workItem from="1653815088153" duration="4514000" />
+      <workItem from="1653819990469" duration="2280000" />
     </task>
     <servers />
   </component>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import BtnCart from "./buttons/BtnCart";
+import {toast} from "react-toastify";
 
 export default function Header() {
   const { token, setToken, isAdmin, setIsAdmin } = useUserContext();
@@ -12,6 +13,15 @@ export default function Header() {
     setToken(false);
     setIsAdmin(false);
     navigate("/")
+    toast.success("Logout",{
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
 
   }
   useEffect(() => {

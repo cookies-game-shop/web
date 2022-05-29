@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { setImages } from "../service/utils";
+import {ToastContainer} from "react-toastify";
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -42,7 +43,7 @@ const Home = () => {
   };
 
   return (
-      <div>
+    <div>
         <div className="container py-5">
           <div className="row">
             <div className="col-12 text-center">

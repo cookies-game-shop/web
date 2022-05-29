@@ -55,9 +55,9 @@ export function setImages(array) {
                     "https://images.ctfassets.net/rporu91m20dc/5b6cExtm3DN8A9EStCAk5x/d575e5ce68bf62d2086a1467a291831d/DOOM-Eternal-DLC2_Bnet-BoxArt-SiteStore_Bnet_1200x1476-01.jpg?q=70&fm=webp";
                 break;
 
-            case "The Elder Scrolls Online Collection: Blackwood":
+            case "The Elder Scrolls Online Collection":
                 element.previewImage =
-                    "https://images.ctfassets.net/rporu91m20dc/IMqNcZUfJBDZoHlqw69l0/632c10a68b048174ef18265ae7acbc7b/the-elder-scrolls-online-collection--blackwood-product-image?q=70&fm=webp";
+                    "https://upload.wikimedia.org/wikipedia/ru/1/1f/The_Elder_Scrolls_Online_Blackwood.jpg";
                 break;
 
             case "The Elder Scrolls V: Skyrim - Anniversary Upgrade":

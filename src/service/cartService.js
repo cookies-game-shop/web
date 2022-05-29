@@ -1,5 +1,6 @@
 import axios from "axios";
 import QueryString from "query-string";
+import {toast} from "react-toastify";
 
 class cartService{
     addToCart( game_id) {
@@ -20,7 +21,27 @@ class cartService{
             )
             .then(function (res) {
                 console.log(res.data);
-            });
+                toast.success("Added to cart!",{
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+            }).catch((e)=>{
+                console.log(e);
+        toast.error("Please, register or login!",{
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    });
     }
 
     async deleteFromCart(game_id) {
